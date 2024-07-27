@@ -2,8 +2,8 @@
 
 
 
-
-
+MAJOR_VERSION=11
+TOMCAT_VERSION=11.0.0-M22
 
 
 
