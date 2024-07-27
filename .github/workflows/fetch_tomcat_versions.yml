@@ -1,0 +1,13 @@
+name: Fetch Tomcat Versions
+
+on:
+  schedule:
+    - cron: '* * * * *' # Runs at midnight on every 10th day of the month
+
+jobs:
+  fetch_tomcat_versions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
