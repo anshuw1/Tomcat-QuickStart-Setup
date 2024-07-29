@@ -1,0 +1,2 @@
+## Tomcat-QuickStart-Setup
+The idea of this project is to make easy an automated script optimized for Amazon Linux, simplifying the installation and configuration of the Tomcat server. It handles the entire setup process, ensuring your server is ready with minimal effort. A scheduled job also fetches the latest Tomcat version weekly, automatically updating the tomcat.sh file to keep your server current. Designed for user convenience, the script ensures a seamless setup, allowing you to focus on coding and deployment with a fully configured Tomcat server
