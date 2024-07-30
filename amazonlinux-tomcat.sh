@@ -1,10 +1,10 @@
+
 #!/bin/bash
 # Define log file
 LOG_FILE="/var/log/tomcat_installation.log"
 
-MAJOR_VERSION=11
-TOMCAT_VERSION=11.0.0-M22
-
+MAJOR_VERSION=11     
+TOMCAT_VERSION=11.0.0-M22    
 #Previous Version : 9.0.91, 10.1.26
 
 # Function to log messages with timestamps
@@ -70,7 +70,54 @@ sudo sed -i '56d' $TOMCAT_USER_CONFIG
 sudo sed -i '21d' /opt/tomcat/webapps/manager/META-INF/context.xml
 sudo sed -i '22d' /opt/tomcat/webapps/manager/META-INF/context.xml
 
+# Start Tomcat
+log "Starting Tomcat..."
+/opt/tomcat/bin/startup.sh
 
+sudo tee /usr/local/sbin/tomcat << 'EOF'
+#!/bin/bash
+
+case "$1" in
+    -up)
+        echo "Starting Tomcat..."
+        sudo -u root /opt/tomcat/bin/startup.sh
+        ;;
+    -down)
+        echo "Stopping Tomcat..."
+        sudo -u root /opt/tomcat/bin/shutdown.sh
+        ;;
+    -start)
+        echo "Restarting Tomcat..."
+        echo "Stopping Tomcat..."
+        sudo -u root /opt/tomcat/bin/shutdown.sh
+        sleep 5  # Wait for Tomcat to stop completely
+        echo "Starting Tomcat..."
+        sudo -u root /opt/tomcat/bin/startup.sh
+        ;;
+    *)
+        echo "Usage: tomcat {-up|-down|-start}"
+        ;;
+esac
+EOF
+
+sudo chmod +x /usr/local/sbin/tomcat
+
+echo "alias tomcat='/usr/local/sbin/tomcat'" >> ~/.bashrc
+
+source ~/.bashrc
+
+# Save Tomcat credentials
+log "Saving Tomcat credentials..."
+echo "username: apachetomcat" > /opt/tomcatcreds.txt
+echo "password: $password" >> /opt/tomcatcreds.txt
+echo "tomcat path: /opt/tomcat" >> /opt/tomcatcreds.txt
+echo "port number: publicip:8080" >> /opt/tomcatcreds.txt
+echo "COMM TO RUN TOMCAT:sudo tomcat -up" >> /opt/tomcatcreds.txt 
+echo "COMM TO STOP TOMCAT:sudo tomcat -down" >> /opt/tomcatcreds.txt 
+echo "COMM TO RESTSRT TOMCAT:sudo tomcat -restart" >> /opt/tomcatcreds.txt 
+
+# Clean up
+log "Cleaning up..."
 rm -f openjdk-17.0.2_linux-x64_bin.tar.gz
 rm -f apache-tomcat-$TOMCAT_VERSION.tar.gz
 
