@@ -86,7 +86,7 @@ case "$1" in
         echo "Stopping Tomcat..."
         sudo -u root /opt/tomcat/bin/shutdown.sh
         ;;
-    -start)
+    -restart)
         echo "Restarting Tomcat..."
         echo "Stopping Tomcat..."
         sudo -u root /opt/tomcat/bin/shutdown.sh
@@ -95,7 +95,7 @@ case "$1" in
         sudo -u root /opt/tomcat/bin/startup.sh
         ;;
     *)
-        echo "Usage: tomcat {-up|-down|-start}"
+        echo "Usage: tomcat {-up|-down|-restart}"
         ;;
 esac
 EOF
