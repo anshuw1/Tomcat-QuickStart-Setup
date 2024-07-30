@@ -18,7 +18,7 @@ log "Starting Tomcat installation script..."
 set -e  # Exit immediately if a command exits with a non-zero status
 
 # Check if Tomcat is already installed
-if [ -d "/opt/tomcat $TOMCAT_VERSION" ]; then
+if [ -d "/opt/tomcat" ]; then
     log "Tomcat version $TOMCAT_VERSION is already installed."
     exit 0
 fi
