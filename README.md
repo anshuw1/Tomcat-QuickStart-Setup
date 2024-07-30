@@ -11,6 +11,15 @@ The idea of this project is to make easy an automated script optimized for Amazo
 - Easy-to-use script with minimal setup required.
 - Focus on coding and deployment with a fully configured Tomcat server.
 
+## Supported Platforms
+
+Our scripts support the following environments on AWS:
+
+- **Amazon Linux**:
+  - `amazonlinux-tomcat.sh`: Installs Tomcat on an Amazon Linux instance.
+- **Ubuntu**:
+  - `ubuntu-tomcat.sh`: Installs Tomcat on an Ubuntu instance.
+
 ## Prerequisites
 
 - Amazon Linux instance
@@ -27,8 +36,8 @@ The idea of this project is to make easy an automated script optimized for Amazo
 
 2. **Run the Setup Script:**
     ```sh
-    chmod +x setup.sh
-    ./setup.sh
+   sh amazonlinux-tomcat.sh  # For Amazon Linux
+   sh ubuntu-tomcat.sh       # For Ubuntu
     ```
 
 ## Usage
@@ -41,3 +50,10 @@ The idea of this project is to make easy an automated script optimized for Amazo
 The scheduled job automatically updates the `tomcat.sh` file with the latest Tomcat version. To manually update, you can rerun the setup script:
 ```sh
 ./setup.sh
+```
+## Contribution
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+---
+
+Feel free to reach out if you have any questions or need further assistance.
