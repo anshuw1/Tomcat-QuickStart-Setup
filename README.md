@@ -38,6 +38,7 @@ Our scripts support the following environments on AWS:
     ```sh
    sh amazonlinux-tomcat.sh  # For Amazon Linux
    sh ubuntu-tomcat.sh       # For Ubuntu
+   sh remove-tomcat.sh       # To remove Tomcat
     ```
 
 ## Usage
