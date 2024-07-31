@@ -3,8 +3,9 @@
 # Define log file
 LOG_FILE="/var/log/tomcat_installation.log"
 
-MAJOR_VERSION=11     
-TOMCAT_VERSION=11.0.0-M22    
+TOMCAT_VERSION=11.0.0-M22 
+MAJOR_VERSION=$(echo "$TOMCAT_VERSION" | cut -d'.' -f1)
+   
 #Previous Version : 9.0.91, 10.1.26
 
 # Function to log messages with timestamps
