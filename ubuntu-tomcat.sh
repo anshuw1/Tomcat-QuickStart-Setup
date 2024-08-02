@@ -3,7 +3,7 @@
 # Define log file
 LOG_FILE="/var/log/tomcat_installation.log"
 
-# Fetched latest version 
+TOMCAT_VERSION=11.0.0-M22
 TOMCAT_VERSION=11.0.0-M22
 # Previous Versions : 9.0.91, 10.1.26
 
