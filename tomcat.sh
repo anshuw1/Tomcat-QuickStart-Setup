@@ -201,11 +201,11 @@ sudo tee /usr/local/sbin/tomcat > /dev/null <<'EOF'
 #!/bin/bash
 
 case "$1" in
-    --up)
+    --start)
         echo "Starting Tomcat..."
         sudo -u root /opt/tomcat/bin/startup.sh
         ;;
-    --down)
+    --stop)
         echo "Stopping Tomcat..."
         sudo -u root /opt/tomcat/bin/shutdown.sh
         ;;
@@ -217,7 +217,7 @@ case "$1" in
         echo "Starting Tomcat..."
         sudo -u root /opt/tomcat/bin/startup.sh
         ;;
-    --delete)
+    --remove)
         echo "Removing Tomcat..."
         sudo -u root /opt/remove.sh
         sudo rm -r /opt/remove.sh
@@ -225,21 +225,21 @@ case "$1" in
     --port)
         sudo -u root /opt/fetchport.sh
         ;;  
-    --port-change)
+    --change-port)
         sudo -u root /opt/portuner.sh "$2" 
         ;;
-    --passwd-change)
+    --change-password)
         sudo -u root /opt/passwd.sh "$2"
         ;;
    --help)
         echo "Commands:"
-        echo "--up: Start Tomcat"
-        echo "--down: Stop Tomcat"
+        echo "--start: Start Tomcat"
+        echo "--stop: Stop Tomcat"
         echo "--restart: Restart Tomcat"
-        echo "--delete: Remove Tomcat"
+        echo "--remove: Remove Tomcat"
         echo "--port: Show current port"
-        echo "--port-change <port>: Change port"
-        echo "--passwd-change <password>: Change password"
+        echo "--chane-port <port>: Change port"
+        echo "--change-password <password>: Change password"
         ;;
     *)
         echo "Invalid command. Use --help for options."
